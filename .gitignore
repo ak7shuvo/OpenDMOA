@@ -1,0 +1,17 @@
+# Unzipped read-only baseline (regenerate with: unzip opendmo-betterV-v1.0.zip -d baseline/)
+baseline/
+.venv*/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+opendmo/frontend/.next/
+opendmo/frontend/out/
+opendmo/frontend/next-env.d.ts
+opendmo/frontend/tsconfig.tsbuildinfo
+opendmo/backend/app/static/
+opendmo/data/
+opendmo/backend/data/
+opendmo/build/
+*.db
+.DS_Store

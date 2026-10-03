@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use OpenDMO in research, please cite it as below."
+title: "OpenDMO: Open Destination Management & Analytics Platform"
+version: "2.0.0"
+date-released: "2026-10-03"
+license: MIT
+repository-code: "https://github.com/ak7shuvo/OpenDMOA"
+type: software
+authors:
+  - name: "OpenDMO contributors"
+keywords: [tourism, destination management, carrying capacity, forecasting, Bangladesh, open science]

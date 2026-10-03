@@ -1,0 +1,2 @@
+# Demo model uses the built-in json-linear loader: NO third-party dependencies.
+# This file exists to satisfy the model package contract.
