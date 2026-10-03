@@ -1,0 +1,27 @@
+{
+  "id": "demo-tourism-demand",
+  "name": "Tourism Demand Forecast (DEMO)",
+  "version": "1.0.0",
+  "task": "regression",
+  "framework": "json-linear",
+  "description": "LOCAL DEMONSTRATION MODEL. Coefficients are illustrative constants chosen to show the runtime workflow; they are NOT fitted to real observations and must not be cited as research findings. It exists so the full install -> register -> schema-driven input -> run -> provenance pipeline works end-to-end without trusting external code.",
+  "source_repo": "local://bundled/demo-tourism-demand-v1",
+  "source_ref": "bundled-v1.0.0",
+  "license": "MIT",
+  "training_data": "NONE — synthetic demonstration coefficients, no real training data.",
+  "expected_units": {
+    "visitor_count": "visitors/day",
+    "hotel_occupancy": "percent",
+    "rainfall": "mm/day",
+    "temperature": "celsius",
+    "holiday": "0|1",
+    "event_count": "count",
+    "prediction": "visitors/day"
+  },
+  "evaluation": {
+    "note": "No real evaluation exists for this demo. Fields below are placeholders showing where metrics would appear once a real model is registered.",
+    "r2": null,
+    "mae": null
+  },
+  "author": "OpenDMO project (bundled)"
+}

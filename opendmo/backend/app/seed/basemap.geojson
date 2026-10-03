@@ -1,0 +1,426 @@
+{
+ "type": "FeatureCollection",
+ "name": "OpenDMO schematic basemap",
+ "properties": {
+  "schematic": true,
+  "note": "Hand-simplified outline for orientation only. Not survey-grade, not an official boundary."
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Bangladesh (schematic outline)",
+    "kind": "outline"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       88.08,
+       26.45
+      ],
+      [
+       88.5,
+       26.35
+      ],
+      [
+       89.0,
+       26.15
+      ],
+      [
+       89.6,
+       26.2
+      ],
+      [
+       89.85,
+       25.9
+      ],
+      [
+       90.4,
+       25.18
+      ],
+      [
+       91.0,
+       25.2
+      ],
+      [
+       91.6,
+       25.17
+      ],
+      [
+       92.05,
+       25.2
+      ],
+      [
+       92.45,
+       24.95
+      ],
+      [
+       92.5,
+       24.6
+      ],
+      [
+       92.2,
+       24.45
+      ],
+      [
+       91.9,
+       24.2
+      ],
+      [
+       91.45,
+       24.1
+      ],
+      [
+       91.25,
+       23.65
+      ],
+      [
+       91.15,
+       23.05
+      ],
+      [
+       91.45,
+       22.95
+      ],
+      [
+       91.75,
+       23.25
+      ],
+      [
+       92.0,
+       23.6
+      ],
+      [
+       92.3,
+       23.75
+      ],
+      [
+       92.6,
+       23.55
+      ],
+      [
+       92.65,
+       22.6
+      ],
+      [
+       92.6,
+       22.0
+      ],
+      [
+       92.45,
+       21.4
+      ],
+      [
+       92.3,
+       20.75
+      ],
+      [
+       92.0,
+       21.2
+      ],
+      [
+       91.95,
+       21.5
+      ],
+      [
+       91.8,
+       22.3
+      ],
+      [
+       91.5,
+       22.8
+      ],
+      [
+       90.9,
+       22.5
+      ],
+      [
+       90.6,
+       22.3
+      ],
+      [
+       90.2,
+       21.9
+      ],
+      [
+       89.6,
+       21.75
+      ],
+      [
+       89.0,
+       21.65
+      ],
+      [
+       88.75,
+       22.0
+      ],
+      [
+       88.95,
+       23.2
+      ],
+      [
+       88.6,
+       24.25
+      ],
+      [
+       88.1,
+       24.6
+      ],
+      [
+       88.45,
+       25.2
+      ],
+      [
+       88.85,
+       25.5
+      ],
+      [
+       88.1,
+       25.8
+      ],
+      [
+       88.08,
+       26.45
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Sylhet",
+    "kind": "city"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     91.87,
+     24.9
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Dhaka",
+    "kind": "city"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     90.41,
+     23.81
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Chattogram",
+    "kind": "city"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     91.83,
+     22.36
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Rangamati",
+    "kind": "city"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     92.17,
+     22.65
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Cox's Bazar",
+    "kind": "city"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     91.98,
+     21.43
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Surma",
+    "kind": "river"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      92.45,
+      24.9
+     ],
+     [
+      92.1,
+      24.92
+     ],
+     [
+      91.87,
+      24.9
+     ],
+     [
+      91.5,
+      24.95
+     ],
+     [
+      91.2,
+      24.8
+     ],
+     [
+      90.9,
+      24.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Piyain",
+    "kind": "river"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      92.02,
+      25.19
+     ],
+     [
+      92.0,
+      25.1
+     ],
+     [
+      91.95,
+      25.0
+     ],
+     [
+      91.9,
+      24.92
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Karnaphuli / Kassalong",
+    "kind": "river"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      92.3,
+      23.4
+     ],
+     [
+      92.25,
+      23.0
+     ],
+     [
+      92.2,
+      22.65
+     ],
+     [
+      92.0,
+      22.45
+     ],
+     [
+      91.83,
+      22.25
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Sangu",
+    "kind": "river"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      92.6,
+      21.75
+     ],
+     [
+      92.45,
+      21.9
+     ],
+     [
+      92.3,
+      22.1
+     ],
+     [
+      92.22,
+      22.2
+     ],
+     [
+      92.0,
+      22.15
+     ],
+     [
+      91.85,
+      22.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Meghna",
+    "kind": "river"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      90.95,
+      24.4
+     ],
+     [
+      90.8,
+      23.9
+     ],
+     [
+      90.65,
+      23.5
+     ],
+     [
+      90.6,
+      23.0
+     ],
+     [
+      90.7,
+      22.5
+     ]
+    ]
+   }
+  }
+ ]
+}

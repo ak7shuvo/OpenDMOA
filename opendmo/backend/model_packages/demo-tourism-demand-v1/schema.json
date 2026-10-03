@@ -1,0 +1,13 @@
+{
+  "inputs": [
+    {"name": "visitor_count",   "label": "Visitor count (same day last year)", "type": "float", "unit": "visitors/day", "min": 0,   "required": true},
+    {"name": "hotel_occupancy", "label": "Hotel occupancy",                    "type": "float", "unit": "percent",      "min": 0, "max": 100, "required": true},
+    {"name": "rainfall",        "label": "Rainfall",                           "type": "float", "unit": "mm/day",       "min": 0,   "required": true},
+    {"name": "temperature",     "label": "Temperature",                        "type": "float", "unit": "celsius",                 "required": true},
+    {"name": "holiday",         "label": "Public holiday (0/1)",               "type": "int",   "unit": "0|1",          "min": 0, "max": 1, "required": true},
+    {"name": "event_count",     "label": "Event count",                        "type": "int",   "unit": "count",        "min": 0,   "required": true}
+  ],
+  "outputs": [
+    {"name": "prediction", "label": "Predicted visitors", "type": "float", "unit": "visitors/day"}
+  ]
+}

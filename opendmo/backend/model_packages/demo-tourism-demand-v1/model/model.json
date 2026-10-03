@@ -1,0 +1,13 @@
+{
+  "format": "json-linear",
+  "bias": 40.0,
+  "clip_negative": true,
+  "coefficients": {
+    "visitor_count": 1.08,
+    "hotel_occupancy": 1.6,
+    "rainfall": -2.1,
+    "temperature": 0.9,
+    "holiday": 85.0,
+    "event_count": 22.0
+  }
+}
