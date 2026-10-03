@@ -9,12 +9,22 @@ _SESSION_DIR = tempfile.mkdtemp(prefix='opendmo-test-')
 os.environ['OPENDMO_DATA_DIR'] = _SESSION_DIR
 
 
+# Optional: run the whole suite against PostgreSQL, e.g.
+#   OPENDMO_TEST_DATABASE_URL=postgresql+psycopg://postgres@/opendmo_test?host=/var/tmp/odpg&port=5544 pytest
+PG_URL = os.environ.get('OPENDMO_TEST_DATABASE_URL')
+
+
 def _fresh(tmp: Path):
     from app.config import reset_settings_cache
-    from app.db import reset_engine
+    from app.db import Base, get_engine, reset_engine
     os.environ['OPENDMO_DATA_DIR'] = str(tmp)
+    if PG_URL:
+        os.environ['OPENDMO_DATABASE_URL'] = PG_URL
     reset_settings_cache()
     reset_engine()
+    if PG_URL:
+        from app import models  # noqa: F401
+        Base.metadata.drop_all(get_engine())
 
 
 @pytest.fixture()

@@ -243,7 +243,11 @@ def test_settings_and_diagnostics(client):
     d = client.get('/api/system/diagnostics').json()
     assert d['opendmo_version'] == '2.0.0' and d['packages']['fastapi'] and 'python' in d['text']
     st = client.get('/api/system/status').json()
-    assert st['db_engine'] == 'sqlite' and st['db_path'].endswith('opendmo.db')
+    from tests.conftest import PG_URL
+    if PG_URL:
+        assert st['db_engine'] == 'postgresql' and 'password' not in st['db_path']
+    else:
+        assert st['db_engine'] == 'sqlite' and st['db_path'].endswith('opendmo.db')
 
 
 # ----------------------------------------------------------------------------- model runtime

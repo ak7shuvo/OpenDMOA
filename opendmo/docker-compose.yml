@@ -1,0 +1,29 @@
+# Optional: PostgreSQL + PostGIS instead of the default zero-config SQLite file.
+#
+#   docker compose up -d db
+#   .venv/bin/pip install -r backend/requirements-postgres.txt      (Windows: .venv\Scripts\pip …)
+#   OPENDMO_DATABASE_URL=postgresql+psycopg://opendmo:opendmo@localhost:5432/opendmo python run.py
+#
+# The OpenDMO app itself still runs from run.py; only the database moves into Docker.
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: opendmo-postgis
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: opendmo
+      POSTGRES_PASSWORD: opendmo        # local development only — change for shared servers
+      POSTGRES_DB: opendmo
+    ports:
+      - "127.0.0.1:5432:5432"           # bound to localhost only
+    volumes:
+      - opendmo-pgdata:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/10-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U opendmo"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  opendmo-pgdata:

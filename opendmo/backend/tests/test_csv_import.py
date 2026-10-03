@@ -153,3 +153,25 @@ def test_templates_round_trip(db, ds):
     assert m['layout'] == 'wide' and all(v for v in m['columns'].values())
     long = ci.template_csv(ds.variable_defs, 'long', 'monthly')
     assert ci.suggest_mapping(ci.parse_table(long.encode()), ds.variable_defs)['layout'] == 'long'
+
+
+def test_messy_sample_file(db, ds):
+    from app.seed.samples import MESSY
+    t = ci.parse_table(MESSY.encode())
+    m = ci.suggest_mapping(t, ds.variable_defs)
+    assert t.delimiter == ';' and m['columns']['Visitor Count'] == 'visitors' and m['columns']['Hotel occupancy'] == 'occupancy_rate'
+    m['columns']['Peak day'] = 'daily_peak'
+    m['decimal'] = ','
+    rep = ci.validate(db, ds, t, m)
+    assert rep.n_errors == 1 and 'value_missing' in codes(rep, 'warning')
+    jan = {o['variable']: o['value'] for o in rep.observations if o['period'] == '2025-01'}
+    assert jan == {'visitors': 52340, 'daily_peak': 6120, 'occupancy_rate': 61.5}
+
+
+def test_bundled_samples_are_valid(db, tmp_path):
+    from app.seed.samples import write_samples
+    write_samples(tmp_path)
+    ds = dsvc.create_dataset(db, 'sajek', 'weather', 'Sample weather')
+    t = ci.parse_table((tmp_path / 'DEMO_sajek_weather_long.csv').read_bytes())
+    rep = ci.validate(db, ds, t, ci.suggest_mapping(t, ds.variable_defs))
+    assert rep.n_errors == 0 and len(rep.observations) > 400
