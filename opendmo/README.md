@@ -118,8 +118,9 @@ Layout: `backend/` (FastAPI, SQLAlchemy, numpy; serves the built UI from `backen
 - Holt-Winters parameters are optimised on a coarse grid (0.05–0.9); multiplicative seasonality is not offered.
 - Single-user, local application: no authentication, no concurrent multi-user editing.
 - Model packages support the `json-linear` format only (pickle refused by default by design).
-- The macOS and Windows launchers are covered by CI on GitHub-hosted runners; they could not be exercised
-  interactively during development (Linux was).
+- `run.py` and all three native launchers (`start-windows.bat`, `start-mac.command`, `start-linux.sh`) pass a boot
+  smoke test in CI on Windows, macOS and Ubuntu (Python 3.11 and 3.13). The double-click experience itself
+  (Finder/Explorer prompts, Gatekeeper/SmartScreen warnings) is not automated and was not tested by hand.
 
 ## Licence and citation
 
