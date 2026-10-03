@@ -104,3 +104,8 @@ def test_projection_series_length():
         {'base_visitors': 1000, 'growth_pct': 0, 'shock_pct': -50, 'years': 4, 'annual_capacity': 2000, 'base_year': 2026})
     assert [p['value'] for p in out['series']] == [500, 500, 500, 500]
     assert out['first_year_over_capacity'] == 'none' and out['status'] == 'ok'
+
+
+def test_generated_docs_are_current():
+    from app.docs_gen import main
+    assert main(check=True) == 0, 'run `python -m app.docs_gen` and commit the result'
