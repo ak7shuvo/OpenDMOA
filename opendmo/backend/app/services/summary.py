@@ -111,12 +111,11 @@ def kpi(db, ind: dict, destination_id: str, start: str | None, end: str | None) 
             value = (tot - norm) / norm * 100 if norm else None
             spark = [v for v in (_derived_point(variable, table[p]) for p in win) if v is not None][-24:]
         elif mode == 'yoy':
-            cur = [table[p]['visitors'] for p in win if 'visitors' in table[p]]
-            base = [table[_shift_year(p)]['visitors'] for p in win if _shift_year(p) in table and 'visitors' in table[_shift_year(p)]]
-            if cur and len(base) == len(cur) and sum(base):
-                value = (sum(cur) - sum(base)) / sum(base) * 100
-            spark = [((table[p]['visitors'] - table[_shift_year(p)]['visitors']) / table[_shift_year(p)]['visitors'] * 100)
-                     for p in win if _shift_year(p) in table and table[_shift_year(p)].get('visitors')][-24:]
+            pairs = [(table[p]['visitors'], table[_shift_year(p)]['visitors']) for p in win
+                     if 'visitors' in table[p] and _shift_year(p) in table and table[_shift_year(p)].get('visitors')]
+            if pairs and sum(b for _, b in pairs):
+                value = (sum(c for c, _ in pairs) - sum(b for _, b in pairs)) / sum(b for _, b in pairs) * 100
+            spark = [(c - b) / b * 100 for c, b in pairs][-24:]
     if value is None:
         return cell | {'source': _src(ds)}
     change = (value - prev) / abs(prev) * 100 if prev not in (None, 0) else None
@@ -144,8 +143,7 @@ def destination_summary(db, destination_id: str, start: str | None, end: str | N
     ready_done = db.scalar(select(func.count(ReadinessItem.id)).where(ReadinessItem.destination_id == destination_id, ReadinessItem.done.is_(True))) or 0
     datasets = db.scalars(select(Dataset).where(Dataset.destination_id == destination_id)).all()
     demo_any = any(d.is_demo for d in datasets)
-    extent = db.execute(select(func.min(Observation.period), func.max(Observation.period))
-                        .where(Observation.destination_id == destination_id)).one()
+    extent = periods.extent(db.scalars(select(Observation.period).where(Observation.destination_id == destination_id).distinct()).all())
     return {
         'destination_id': destination_id, 'start': start, 'end': end, 'kpis': kpis,
         'counts': {

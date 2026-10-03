@@ -31,3 +31,8 @@ def test_in_range_overlap():
     assert not periods.in_range('2025-08', '2025-09', '2026-08')
     assert not periods.in_range('2024', '2025-09', None)
     assert periods.in_range('2025-Q3', '2025-09', None)
+
+
+def test_extent_mixed_granularity():
+    assert periods.extent(['2026-Q2', '2026-08', '2019-01', '2025']) == ('2019-01', '2026-08')
+    assert periods.extent([]) == (None, None)

@@ -65,7 +65,7 @@ cifuentes = Method(
         Param('visit_duration_h', 'Average visit duration', 'h', 'Time a visitor occupies the site', default=2, min=0, max=24),
         Param('correction_factors', 'Correction factors (limiting / total magnitude)', '', 'Cf = Ml/Mt for each limiting factor', type='factors', default=DEFAULT_FACTORS),
         Param('management_capacity_pct', 'Management capacity (MC)', '%', 'Existing / optimal management capacity', default=50, min=0, max=100),
-        Param('observed_daily_visitors', 'Observed peak daily visitors (optional)', 'visitors/day', 'Compared against ECC', required=False, min=0,
+        Param('observed_daily_visitors', 'Observed peak daily visitors', 'visitors/day', 'Compared against ECC', required=False, min=0,
               source=('visitor_flow', 'daily_peak', 'max')),
     ),
     outputs=(

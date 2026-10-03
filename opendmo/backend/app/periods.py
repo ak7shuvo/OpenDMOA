@@ -137,3 +137,11 @@ def next_periods(last: str, h: int) -> list[str]:
 
 def season_length_for(p: str) -> int:
     return {'year': 1, 'quarter': 4, 'month': 12, 'day': 7}.get(kind(p) or '', 1)
+
+
+def extent(values) -> tuple[str | None, str | None]:
+    """Chronological min/max of mixed-granularity periods (string order puts 2026-Q2 after 2026-08)."""
+    vals = [v for v in values if v]
+    if not vals:
+        return None, None
+    return min(vals, key=to_month_start), max(vals, key=to_period_end)

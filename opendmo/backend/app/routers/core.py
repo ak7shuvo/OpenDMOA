@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy import func, select, text
 from sqlalchemy.orm import Session
 
-from .. import __version__, catalog
+from .. import __version__, catalog, periods
 from ..config import get_settings
 from ..db import get_db, get_engine
 from ..models import Dataset, Destination, Observation
@@ -32,7 +32,7 @@ def health():
 
 @router.get('/meta')
 def meta(db: Session = Depends(get_db)):
-    extent = db.execute(select(func.min(Observation.period), func.max(Observation.period))).one()
+    extent = periods.extent(db.scalars(select(Observation.period).distinct()).all())
     demo = db.scalar(select(func.count(Dataset.id)).where(Dataset.is_demo.is_(True)))
     total = db.scalar(select(func.count(Dataset.id)))
     return {
