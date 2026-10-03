@@ -90,7 +90,7 @@ def write_zip(target: Path) -> None:
             z.writestr(info, data)
     digest = hashlib.sha256(target.read_bytes()).hexdigest()
     target.with_suffix('.zip.sha256').write_text(f'{digest}  {target.name}\n')
-    print(f'wrote {target.relative_to(ROOT)} ({target.stat().st_size / 1e6:.2f} MB) sha256 {digest[:16]}…')
+    print(f'wrote {target} ({target.stat().st_size / 1e6:.2f} MB) sha256 {digest[:16]}…')
 
 
 def main() -> None:

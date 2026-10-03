@@ -51,6 +51,21 @@ jobs:
       - name: Boot smoke test via run.py (creates .venv, installs pinned deps, serves UI + API)
         working-directory: opendmo
         run: python scripts/smoke_test.py
+      - name: Native launcher smoke (start-linux.sh)
+        if: runner.os == 'Linux'
+        working-directory: opendmo
+        run: ./start-linux.sh --smoke --port 8899 --no-browser 2>&1 | tee launcher.log && grep -q "smoke test passed" launcher.log
+      - name: Native launcher smoke (start-mac.command)
+        if: runner.os == 'macOS'
+        working-directory: opendmo
+        run: ./start-mac.command --smoke --port 8899 --no-browser < /dev/null 2>&1 | tee launcher.log && grep -q "smoke test passed" launcher.log
+      - name: Native launcher smoke (start-windows.bat)
+        if: runner.os == 'Windows'
+        working-directory: opendmo
+        shell: pwsh
+        run: |
+          cmd /c "start-windows.bat --smoke --port 8899 --no-browser < NUL" 2>&1 | Tee-Object -FilePath launcher.log
+          if (-not (Select-String -Path launcher.log -Pattern "smoke test passed" -Quiet)) { exit 1 }
 
   postgres:
     name: Backend tests on PostgreSQL 16
